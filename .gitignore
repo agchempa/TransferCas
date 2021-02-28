@@ -1,3 +1,11 @@
+slurm-*.out
+models/*
+data/raw/*
+data/raw_old/*
+samples/*
+*.sbatch
+temp*.fa
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
