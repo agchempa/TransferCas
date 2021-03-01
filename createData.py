@@ -213,8 +213,8 @@ def main():
         print(f"Time: {end - start} seconds")
 
     dat = pd.DataFrame.from_dict([dat for guide, dat in guides.items()])
-    scaler = pickle.load(open("scaler.pkl", "rb" ))
-    dat[features] = scaler.transform(dat[features])
+    # scaler = pickle.load(open("scaler.pkl", "rb" ))
+    # dat[features] = scaler.transform(dat[features])
     dat = dat.sort_values(by=["pos"])
     dat = dat[["guide"] + features]
 
