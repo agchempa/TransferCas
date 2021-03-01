@@ -1,6 +1,7 @@
 slurm-*.out
 models/*
 data/raw/*
+data/*
 data/raw_old/*
 samples/*
 *.sbatch

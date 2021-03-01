@@ -8,7 +8,7 @@ import neptune
 from pprint import pprint
 from sklearn.metrics import r2_score
 from features import features
-features = [f for f in features if f != "DR"]
+# features = [f for f in features if f != "DR"]
 
 from utils import encode, from_json, to_json
 import argparse
@@ -78,7 +78,7 @@ model_params = {
     "LR": args.learning_rate,
     "WD": 1e-4,
     "dropout": args.dropout,
-    "name": "predict_features_with_floss"
+    "name": "predict_hybridization"
 }
 pprint(model_params)
 
@@ -198,13 +198,15 @@ for epoch in range(max_epochs):
         # backward
         optimizer.zero_grad()
         loss.backward()
+        torch.nn.utils.clip_grad_norm(model.parameters(), 1)
+
 
         # gradient descent or adam step
         optimizer.step()
     train_loss = numerator / denominator
 
     # Validation
-    if epoch % 5 != 0: continue
+    if epoch % 1 != 0: continue
 
     # Validation
     dat = {feature: {"n": 0, "d": 0} for feature in features}
